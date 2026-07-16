@@ -216,7 +216,7 @@ body {
 </html>`;
   
   // 保存 HTML 文件
-  const outputDir = '/root/.openclaw/workspace/screenshots';
+  const outputDir = '/tmp/fund_screenshots';
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -231,8 +231,7 @@ body {
   // 使用 Playwright 截图
   console.log('正在截图...');
   const browser = await chromium.launch({
-    headless: true,
-    executablePath: '/root/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome'
+    headless: true
   });
   
   const page = await browser.newPage();
