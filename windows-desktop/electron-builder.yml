@@ -1,0 +1,31 @@
+appId: com.hu619340515.fundvaluation
+productName: 基金估值
+copyright: Copyright © 2026 hu619340515
+asar: true
+directories:
+  output: dist
+files:
+  - out/**/*
+extraResources:
+  - from: resources
+    to: resources
+win:
+  executableName: FundValuation
+  icon: resources/app.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+nsis:
+  artifactName: FundValuation-Setup-${version}-${arch}.${ext}
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 基金估值
+portable:
+  artifactName: FundValuation-Portable-${version}-${arch}.${ext}

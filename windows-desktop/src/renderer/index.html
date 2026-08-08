@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基金估值</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="header-top">
+          <p id="last-refresh" class="header-subtitle">正在准备数据…</p>
+          <div class="header-actions">
+            <button
+              id="add-toggle-button"
+              class="header-icon-button"
+              type="button"
+              title="添加基金"
+              aria-label="添加基金"
+              aria-controls="quick-add"
+              aria-expanded="false"
+            >＋</button>
+            <button
+              id="refresh-button"
+              class="header-icon-button"
+              type="button"
+              title="立即刷新"
+              aria-label="立即刷新"
+            >↻</button>
+            <button
+              id="settings-button"
+              class="header-icon-button"
+              type="button"
+              title="设置"
+              aria-label="设置"
+            >⚙</button>
+          </div>
+        </div>
+        <div class="summary-inline" aria-label="基金概览">
+          <span><strong id="summary-total">0</strong> 只基金</span>
+          <i aria-hidden="true"></i>
+          <span>今日 <strong id="summary-live">0</strong></span>
+          <i aria-hidden="true"></i>
+          <span>平均 <strong id="summary-average">--</strong></span>
+        </div>
+      </header>
+
+      <main>
+        <section id="quick-add" class="quick-add" hidden>
+          <form id="add-form" class="add-form">
+            <div class="input-group">
+              <input
+                id="fund-code"
+                name="fund-code"
+                type="text"
+                inputmode="numeric"
+                maxlength="6"
+                autocomplete="off"
+                placeholder="输入六位基金代码"
+                aria-describedby="add-hint"
+              />
+              <button id="add-button" class="button button-primary" type="submit">添加</button>
+            </div>
+            <span id="add-hint">输入六位基金代码，例如 110022</span>
+          </form>
+        </section>
+
+        <section class="list-section">
+          <div id="fund-list" class="fund-list"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <div class="empty-icon">＋</div>
+            <h3>还没有基金</h3>
+            <p>点击右上角“＋”添加基金。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="settings-dialog" class="settings-dialog">
+      <form id="settings-form" method="dialog">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow dialog-eyebrow">SETTINGS</p>
+            <h2>应用设置</h2>
+          </div>
+          <button id="settings-close" class="icon-button" type="button" aria-label="关闭">×</button>
+        </div>
+
+        <label class="field-label" for="refresh-interval">自动刷新间隔</label>
+        <select id="refresh-interval">
+          <option value="30">30 秒</option>
+          <option value="60">60 秒</option>
+          <option value="120">2 分钟</option>
+          <option value="300">5 分钟</option>
+        </select>
+
+        <label class="switch-row" for="launch-at-login">
+          <span>
+            <strong>开机启动</strong>
+            <small>启动后静默驻留在系统托盘</small>
+          </span>
+          <input id="launch-at-login" type="checkbox" />
+        </label>
+
+        <label class="switch-row" for="always-on-top">
+          <span>
+            <strong>窗口置顶</strong>
+            <small>作为小浮窗显示在其他窗口上方</small>
+          </span>
+          <input id="always-on-top" type="checkbox" />
+        </label>
+
+        <label class="opacity-row" for="window-opacity">
+          <span class="opacity-heading">
+            <strong>窗口透明度</strong>
+            <output id="window-opacity-value" for="window-opacity">94%</output>
+          </span>
+          <input id="window-opacity" type="range" min="55" max="100" step="1" value="94" />
+        </label>
+
+        <div class="dialog-note">
+          最小化会缩到 Windows 任务栏；关闭窗口会隐藏到右下角托盘。若要彻底退出，请使用托盘菜单中的“退出”。
+        </div>
+
+        <div class="dialog-actions">
+          <button id="settings-cancel" class="button button-secondary" type="button">取消</button>
+          <button class="button button-primary" type="submit">保存设置</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
