@@ -1,0 +1,27 @@
+{
+  "name": "fund-valuation-desktop",
+  "version": "1.0.4",
+  "description": "Windows 基金估值桌面应用",
+  "main": "./out/main/index.js",
+  "author": "hu619340515",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:app": "electron-vite build",
+    "build": "npm run typecheck && npm run test && npm run build:app",
+    "dist:win": "npm run build && electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.10"
+  }
+}

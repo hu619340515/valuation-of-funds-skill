@@ -7,6 +7,16 @@ description: 基金池实时估值可视化工具。获取基金实时估值数�
 
 基金池实时估值可视化工具，生成美观的图片报告。
 
+## Windows 桌面版
+
+仓库的 [`windows-desktop`](./windows-desktop) 目录提供 Windows 10/11 x64 桌面应用，包含深色紧凑行情窗、系统托盘、托盘悬停迷你窗、基金增删排序、自动刷新和多数据源降级。
+
+- [下载安装版 EXE](https://github.com/hu619340515/valuation-of-funds-skill/releases/download/v1.0.4/FundValuation-Setup-1.0.4-x64.exe)
+- [下载便携版 EXE](https://github.com/hu619340515/valuation-of-funds-skill/releases/download/v1.0.4/FundValuation-Portable-1.0.4-x64.exe)
+- [查看 v1.0.4 Release](https://github.com/hu619340515/valuation-of-funds-skill/releases/tag/v1.0.4)
+
+![Windows 桌面版预览](./windows-desktop/docs/ui-preview.png)
+
 ## 功能
 
 1. **实时数据获取** - 从天天基金网获取基金实时估值数据
